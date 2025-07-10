@@ -1,0 +1,531 @@
+/* style.css - Versión Final y Corregida */
+
+/* --- Variables CSS (Propiedades Personalizadas) --- */
+:root {
+    --color-primary: #007bff;
+    --color-primary-dark: #0056b3;
+    --color-secondary: #6c757d;
+    --color-secondary-dark: #5a6268;
+    --color-danger: #dc3545;
+    --color-danger-dark: #c82333;
+    --color-success: #28a745;
+    --color-warning: #ffc107; /* Nuevo color para botones de remover/advertencia */
+    --color-warning-dark: #e0a800;
+
+    --bg-light: #f4f4f4;
+    --bg-white: #fff;
+    --bg-sidebar: #f8f9fa;
+
+    --text-dark: #333;
+    --text-medium: #555;
+
+    --border-light: #ddd;
+    --border-lighter: #eee;
+
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+
+    --border-radius: 8px;
+    --shadow-light: 0 0 10px rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Estilos Generales --- */
+html, body {
+    height: 100%; /* Importante para que position: fixed/absolute funcione correctamente */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden; /* Evita barras de scroll horizontal cuando el sidebar está oculto */
+}
+
+/* --- MAIN LAYOUT - AJUSTADO --- */
+.main-layout {
+    display: flex;
+    /* justify-content: flex-start; Esto ya no es tan crítico si content-area tiene margen */
+    align-items: flex-start;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* NUEVA REGLA: Ajusta el content-area cuando el sidebar está abierto */
+.main-layout.sidebar-open .content-area {
+    margin-right: 300px; /* Ancho del sidebar */
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: var(--spacing-lg);
+    transition: margin-right 0.3s ease-in-out; /* Transición para un movimiento suave */
+}
+
+.container {
+    max-width: 1200px; /* Esto controla el ancho máximo del contenido principal */
+    margin: 0 auto;
+    background-color: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+h1 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* --- Estilos Base para Botones (propiedades comunes) --- */
+.btn-base {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    padding: var(--spacing-sm) var(--spacing-lg); /* Padding por defecto */
+}
+
+/* --- Estilos de Botones Específicos (replicando propiedades de .btn-base) --- */
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    background-color: var(--color-primary);
+    color: white;
+    padding: 12px 25px; /* Aumenta el padding para un botón más grande */
+    font-size: 1.1em; /* Aumenta ligeramente el tamaño de la fuente */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    padding: 8px 15px; /* Ligeramente más pequeño para acciones secundarias */
+    background-color: var(--color-secondary);
+    color: white;
+    font-size: 0.9em;
+    margin-left: var(--spacing-xs);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+.btn-danger {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    padding: 8px 15px;
+    background-color: var(--color-danger);
+    color: white;
+    font-size: 0.9em;
+    margin-left: var(--spacing-xs);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-danger-dark);
+}
+
+/* --- Estilos de la Grilla de Productos --- */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.producto-card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.producto-card h2 {
+    color: var(--color-primary);
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+.producto-card p {
+    margin: var(--spacing-xs) 0;
+    font-size: 0.95em;
+}
+
+.producto-card .precio {
+    font-weight: bold;
+    color: var(--color-success);
+    font-size: 1.1em;
+    margin-top: var(--spacing-sm);
+}
+
+.producto-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: var(--spacing-sm);
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* Estilos para el input de cantidad y el botón de compra en la tarjeta */
+.buy-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+    border-top: 1px dashed var(--border-lighter);
+    /* Control de visibilidad - POR DEFECTO OCULTO */
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: visibility 0s, opacity 0.3s ease, height 0.3s ease;
+}
+
+.buy-controls.visible {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+.buy-controls input[type="number"] {
+    width: 60px;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.producto-card .actions {
+    margin-top: var(--spacing-md);
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    /* Control de visibilidad - POR DEFECTO OCULTO */
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: visibility 0s, opacity 0.3s ease, height 0.3s ease;
+}
+
+.producto-card .actions.visible {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+/* --- Estilos del Formulario --- */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%; /* Simplificado, box-sizing ya maneja el padding */
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    box-sizing: border-box; /* Crucial para que el 100% incluya el padding */
+}
+.form-actions {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+
+/* --- Estilos de Mensajes (para formularios) --- */
+.message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+.message.success {
+    background-color: #d4edda; /* Colores específicos para mensajes */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* --- Mensaje de Error General (para la página de lista) --- */
+.error-message {
+    color: var(--color-danger);
+    text-align: center;
+    font-weight: bold;
+    margin-top: var(--spacing-lg);
+}
+
+/* --- Estilos para el Formulario de Login --- */
+.login-form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.login-form-container h1 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 25px;
+}
+
+.login-form-container .form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-form-container .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-medium);
+}
+
+.login-form-container .form-group input[type="text"],
+.login-form-container .form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.login-form-container .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    margin-top: var(--spacing-md);
+}
+
+.login-form-container .message {
+    margin-top: var(--spacing-lg);
+    font-size: 0.95em;
+}
+
+/* --- Estilos del Carrito de Compras (Sidebar) - REVISADO Y CORREGIDO --- */
+.shopping-cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--bg-sidebar);
+    border-left: 1px solid var(--border-light);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-lg);
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0%); /* Por defecto visible, si no tiene 'hidden' */
+    display: flex;
+    flex-direction: column;
+}
+
+.shopping-cart-sidebar.hidden {
+    transform: translateX(100%); /* Lo mueve completamente fuera de la vista hacia la derecha */
+}
+
+.shopping-cart-sidebar h2 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+#cart-items {
+    max-height: calc(100vh - 200px); /* Ajusta según el tamaño de tu header/footer del carrito */
+    overflow-y: auto;
+    margin-bottom: var(--spacing-lg);
+    padding-right: var(--spacing-xs); /* Para evitar que la barra de scroll corte el contenido */
+}
+
+.cart-item-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-lighter);
+    border-radius: 5px;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info p {
+    margin: 2px 0;
+    font-size: 0.9em;
+}
+
+.cart-item-info strong {
+    color: var(--text-dark);
+}
+
+.cart-item-remove {
+    background-color: var(--color-warning); /* Usamos la variable para el color amarillo */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item-remove:hover {
+    background-color: var(--color-warning-dark);
+}
+
+.cart-summary {
+    border-top: 1px solid var(--border-light);
+    padding-top: var(--spacing-md);
+    text-align: right;
+}
+
+.cart-summary p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+}
+
+.cart-summary .btn-primary,
+.cart-summary .btn-danger {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* --- Media Queries para Responsividad - REVISADO Y CORREGIDO --- */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column; /* Apila el contenido y el carrito */
+    }
+
+    /* Ajuste de margen para el content-area en móvil cuando el carrito está abierto */
+    .main-layout.sidebar-open .content-area {
+        margin-right: 0; /* No necesitamos margen a la derecha en móvil */
+        margin-bottom: 50vh; /* Ajusta este valor si el carrito ocupa más/menos del 50vh */
+    }
+
+    .shopping-cart-sidebar {
+        /* Para móvil, el carrito aparece desde abajo */
+        position: fixed; /* Sigue siendo fixed */
+        top: auto; /* Desactivamos 'top' de desktop */
+        bottom: 0; /* Lo alinea con la parte inferior */
+        left: 0; /* Lo extiende a todo el ancho */
+        width: 100%; /* Ocupa todo el ancho */
+        height: 50vh; /* Ocupa la mitad de la altura de la ventana en móvil */
+        border-left: none; /* Quitamos el borde izquierdo de desktop */
+        border-top: 1px solid var(--border-light); /* Añadimos borde superior */
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra superior */
+        transform: translateY(100%); /* Por defecto oculto hacia abajo en móvil */
+    }
+
+    .shopping-cart-sidebar.hidden {
+        transform: translateY(100%); /* Se mantiene oculto hacia abajo */
+    }
+
+    .shopping-cart-sidebar:not(.hidden) {
+        transform: translateY(0); /* Muestra el carrito desde abajo */
+    }
+
+    #cart-items {
+        max-height: calc(50vh - 120px); /* Ajusta la altura del scroll en móviles, restando espacio para header/footer del carrito */
+    }
+
+    .container {
+        padding: var(--spacing-lg);
+    }
+
+    .header-actions {
+        flex-direction: column; /* Apila los botones de encabezado */
+        align-items: stretch;
+    }
+
+    /* Ajuste para que los botones ocupen todo el ancho en móvil */
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        width: 100%;
+        margin-left: 0 !important; /* Anula margen de .btn-secondary, .btn-danger */
+        margin-top: var(--spacing-sm); /* Espaciado entre botones apilados */
+    }
+    /* Eliminar el margen superior del primer botón en el header-actions para evitar doble margen */
+    .header-actions .btn-primary:first-child,
+    .header-actions .btn-secondary:first-child,
+    .header-actions .btn-danger:first-child {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .login-form-container {
+        margin: var(--spacing-xl) var(--spacing-md);
+        padding: var(--spacing-lg);
+    }
+}

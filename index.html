@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout">
+        <div class="content-area">
+            <div class="container">
+                <div class="header-actions">
+                    <div id="walter">
+                        <h2>TP FINAL TECH LAB  GUERRERO WALTER FERNANDO COMISION 25049 </h2>
+                        <h3> mail: walter.guerrero.utn2022@gmail.com dni:25521576</h3>
+                    </div>
+                    <div class="login-buttons-container">
+                        <button id="login-admin-btn" class="btn-primary">LOGIN ADMIN</button>
+                        <button id="login-user-btn" class="btn-primary">LOGIN USUARIO</button>
+                    </div>
+                    <button id="toggle-cart-btn" class="btn-secondary toggle-btn" style="margin-left: 10px;">Ocultar Carrito</button>
+                    <div id="add-btn-container" style="display: none;">
+                        <a href="product-form.html" class="btn-primary">Agregar Nuevo Producto</a>
+                    </div>
+                </div>
+                <h1>Nuestros Productos</h1>
+                <div id="productos-lista" class="productos-grid">
+                    </div>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    </div>
+            </div>
+        </div>
+
+        <div id="shopping-cart-sidebar" class="shopping-cart-sidebar">
+            <h2>Carrito de Compras</h2>
+            <div id="cart-items">
+                <p>El carrito está vacío.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cart-total-price">$0</span></p>
+                <button id="finalize-purchase-btn" class="btn-primary" style="display: none;">Finalizar Compra</button>
+                <button id="clear-cart-btn" class="btn-danger" style="display: none;">Vaciar Carrito</button>
+            </div>
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
