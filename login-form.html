@@ -15,14 +15,20 @@
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
-                <label for="password">Contraseña: (admin)</label>
-                <input type="password" id="password" name="password" required>
+                <label for="clave">Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="clave" name="clave" required>
+                    <span class="password-toggle" id="togglePassword">
+                        👁️
+                    </span>
+                </div>
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn-primary">Ingresar</button>
             </div>
             <p id="login-message" class="message" style="display: none;"></p>
         </form>
+        <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
     </div>
     <script src="login-form.js"></script>
 </body>

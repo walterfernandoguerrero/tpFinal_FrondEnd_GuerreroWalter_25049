@@ -1,0 +1,27 @@
+/* register.css */
+
+/* Ajustes específicos para el encabezado del formulario si es necesario */
+.login-form-container h1 {
+    /* Puedes sobreescribir estilos de style.css si este h1 necesita algo diferente */
+    margin-bottom: 25px; /* Ejemplo de ajuste de margen */
+}
+
+/* Estilo para el párrafo de "¿Ya tienes cuenta?" y el enlace */
+.text-center {
+    text-align: center;
+    margin-top: 20px; /* Espacio superior */
+    font-size: 0.9em; /* Tamaño de fuente ligeramente más pequeño */
+}
+
+.text-center a {
+    color: var(--color-primary); /* Reutiliza tu color primario */
+    text-decoration: none; /* Quita el subrayado por defecto */
+}
+
+.text-center a:hover {
+    text-decoration: underline; /* Añade subrayado al pasar el ratón */
+}
+
+/* Si necesitas más estilos que solo afecten a este formulario, agrégalos aquí. */
+/* Por ejemplo, para ajustar el ancho de los inputs, espaciado, etc. */
+/* form-group, input[type="text"], input[type="password"] ya deberían verse bien con style.css */

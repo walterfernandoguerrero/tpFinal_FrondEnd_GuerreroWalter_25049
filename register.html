@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="login-form-container">
+        <h1>Registrarse</h1>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required pattern="[0-9]{7,8}" title="El DNI debe contener 7 u 8 dígitos numéricos.">
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" required minlength="4" title="El usuario debe tener al menos 4 caracteres.">
+            </div>
+            <div class="form-group">
+                <label for="clave">Contraseña:</label>
+                <input type="password" id="clave" name="clave" required minlength="6" title="La contraseña debe tener al menos 6 caracteres.">
+            </div>
+            <div class="form-group">
+                <label for="confirmClave">Confirmar Contraseña:</label>
+                <input type="password" id="confirmClave" name="confirmClave" required minlength="6">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </div>
+            <div id="message" class="message" style="display:none;"></div>
+            <p class="text-center">¿Ya tienes cuenta? <a href="index.html">Vuelve al menu Principal</a></p>
+        </form>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>

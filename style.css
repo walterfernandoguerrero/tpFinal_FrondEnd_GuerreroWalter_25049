@@ -529,3 +529,27 @@ h1 {
         padding: var(--spacing-lg);
     }
 }
+
+/* --- Estilos para el campo de contraseña con ojo --- */
+.password-container {
+    position: relative; /* Contenedor para posicionar el icono absolutamente */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] { /* Aplica a ambos tipos de input */
+    width: 100%;
+    padding-right: 40px; /* Deja espacio a la derecha para el icono */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px; /* Distancia desde el borde derecho del input */
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el icono */
+    cursor: pointer; /* Indica que es clickeable */
+    color: var(--text-medium); /* Color del icono */
+    font-size: 1.2em; /* Tamaño del icono */
+    user-select: none; /* Evita que el icono se pueda seleccionar como texto */
+}
