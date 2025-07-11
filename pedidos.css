@@ -1,0 +1,193 @@
+/* pedidos.css */
+
+/* --- Estilos Generales del Contenedor y Títulos --- */
+/* Asegúrate de que las variables CSS como --color-primary, --background-light, etc.,
+   estén definidas en tu 'style.css' principal o en un bloque :root {} en este archivo.
+   Ejemplo de cómo podrías definirlas si no están en 'style.css':
+:root {
+    --color-primary: #007bff;
+    --color-primary-dark: #0056b3;
+    --background-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --hover-color: #e2e6ea;
+    --text-dark: #343a40;
+    --text-medium: #6c757d;
+}
+*/
+
+/* --- Sección de Filtro --- */
+.filter-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--background-light, #f8f9fa); /* Fondo claro, usa variable o fallback */
+    border-radius: 8px;
+    display: flex;         /* Para alinear los elementos en una fila */
+    align-items: center;   /* Centrar verticalmente */
+    gap: 10px;             /* Espacio entre elementos */
+    flex-wrap: wrap;       /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.filter-section label {
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--text-dark, #343a40); /* Color de texto para la etiqueta */
+}
+
+.filter-section input[type="number"] {
+    padding: 10px 15px; /* Un poco más de padding */
+    border: 1px solid var(--border-color, #ccc); /* Borde estándar */
+    border-radius: 5px;
+    flex-grow: 1; /* Permite que el input ocupe espacio disponible */
+    max-width: 200px; /* Ancho máximo para el input */
+    font-size: 1em; /* Tamaño de fuente legible */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave al enfocar */
+}
+
+.filter-section input[type="number"]:focus {
+    border-color: var(--color-primary-dark, #0056b3); /* Color de borde al enfocar */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra suave para indicar enfoque */
+    outline: none; /* Elimina el contorno por defecto del navegador */
+}
+
+.filter-section .btn-primary,
+.filter-section .btn-secondary {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-left: 5px; /* Espacio a la izquierda de los botones */
+}
+
+/* --- Estilos para la Tabla --- */
+.table-container {
+    overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
+    margin-top: 20px;
+    border: 1px solid var(--border-color, #dee2e6); /* Borde del contenedor de la tabla */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+#pedidos-table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre las celdas */
+    min-width: 800px; /* Asegura un ancho mínimo para la tabla, útil en pantallas pequeñas */
+}
+
+#pedidos-table th,
+#pedidos-table td {
+    padding: 12px 15px; /* Espacio interno de las celdas */
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #dee2e6); /* Borde inferior para separar filas */
+}
+
+#pedidos-table thead th {
+    background-color: var(--color-primary, #007bff); /* Color de fondo para el encabezado de la tabla */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#pedidos-table tbody tr:nth-child(even) {
+    background-color: var(--background-light, #f8f9fa); /* Color de fondo para filas pares */
+}
+
+#pedidos-table tbody tr:hover {
+    background-color: var(--hover-color, #e2e6ea); /* Color al pasar el ratón por la fila */
+}
+
+/* --- Estilos para el Pie de Tabla (Total) --- */
+#pedidos-table tfoot {
+    background-color: var(--color-primary, #007bff); /* Fondo azul como el thead */
+    color: white;
+    font-weight: bold;
+}
+
+#pedidos-table tfoot td {
+    padding: 15px; /* Un poco más de padding para el total */
+    border-top: 2px solid white; /* Borde superior para separarlo del cuerpo */
+}
+
+/* Para el total específico, si quieres un estilo adicional */
+#grand-total {
+    text-align: left; /* Asegura que el número esté alineado con los subtotales */
+}
+
+
+/* --- Estilos para Botones dentro de la Tabla (si los activas) --- */
+#pedidos-table .btn-detail,
+#pedidos-table .btn-edit,
+#pedidos-table .btn-delete {
+    padding: 6px 10px;
+    font-size: 0.85em;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Para los enlaces si usas <a> como botón */
+    display: inline-block; /* Para que los botones se alineen correctamente */
+    border: none; /* Sin borde por defecto */
+}
+
+#pedidos-table .btn-detail {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+#pedidos-table .btn-edit {
+    background-color: #ffc107; /* Amarillo */
+    color: #333; /* Texto oscuro para contraste */
+}
+
+#pedidos-table .btn-delete {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+}
+
+/* --- Estilos para Mensajes de Estado --- */
+#loading-message,
+#error-message,
+#no-orders-message {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#loading-message {
+    background-color: #e0f7fa; /* Azul claro */
+    color: #007bff;
+}
+
+#error-message {
+    background-color: #ffe0e6; /* Rojo claro */
+    color: #dc3545;
+}
+
+#no-orders-message {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+/* --- Estilos para el Botón de Volver al Inicio --- */
+.form-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form-actions .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d; /* Gris */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease; /* Transición para el hover */
+}
+
+.form-actions .btn-secondary:hover {
+    background-color: #5a6268; /* Gris más oscuro al pasar el ratón */
+}

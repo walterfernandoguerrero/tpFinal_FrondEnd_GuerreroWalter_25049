@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Endpoints del Backend ---
     const endpointList = 'http://localhost:8080/producto/list';
-    const endpointDelete = 'http://localhost:8080/producto/delete/';
+    const endpointDelete = 'http://localhost:8080/producto/eliminar/';
     const endpointBatchPedido = 'http://localhost:8080/pedido/batchPedidos';
     // const endpointUsuariosList = 'http://localhost:8080/usuarios/list'; // No se usa directamente aquí
 

@@ -553,3 +553,7 @@ h1 {
     font-size: 1.2em; /* Tamaño del icono */
     user-select: none; /* Evita que el icono se pueda seleccionar como texto */
 }
+
+h5{
+    color:red;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pedidos y Ventas</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="pedidos.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Registros de Ventas / Items de Pedido</h1>
+        
+        <div class="filter-section">
+            <label for="filterNroPedido">Filtrar por Nro. Pedido:</label>
+            <input type="number" id="filterNroPedido" placeholder="Ej: 1">
+            <button id="applyFilterBtn" class="btn-primary">Aplicar Filtro</button>
+            <button id="clearFilterBtn" class="btn-secondary">Limpiar Filtro</button>
+        </div>
+        
+        <div id="loading-message" class="message success" style="display: none;">Cargando registros...</div>
+        <div id="error-message" class="message error" style="display: none;"></div>
+
+        <div class="table-container">
+            <table id="pedidos-table">
+                <thead>
+                    <tr>
+                        <th>ID Registro</th>
+                        <th>Nro. Pedido</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>ID Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+                <tfoot id="table-footer">
+                    <tr>
+                        <td colspan="7" style="text-align: right; font-weight: bold;">Total General:</td>
+                        <td id="grand-total" style="font-weight: bold;">$0.00</td>
+                        <td></td> 
+                    </tr>
+                </tfoot>
+                </table>
+        </div>
+
+        <div id="no-orders-message" class="message" style="display: none;">No hay registros de ventas.</div>
+
+        <div class="form-actions">
+            <a href="index.html" class="btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script src="pedidos.js"></script> 
+</body>
+</html>
